@@ -22,7 +22,7 @@ export default class Highlight extends Component {
 
     if (! matches) {
       return (
-        <span>{children}</span>
+        <span key={word}>{children}</span>
       )
     }
 
@@ -30,13 +30,13 @@ export default class Highlight extends Component {
 
     return (
       <span>
-        {segments.map((segment: string, index: number) => {
+        {segments.map(segment => {
           if (segment.trim() === matches[0]) {
             return wrap(matches.shift())
           }
 
           return (
-            <span>{segment}</span>
+            <span key={segment}>{segment}</span>
           )
         })}
       </span>
